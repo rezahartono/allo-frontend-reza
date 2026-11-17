@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    min-width: 320px;
+    background: #f7f8fc;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f1f3f8 25%, #e8ebf3 50%, #f1f3f8 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+.space-hero {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 75% 35%, rgb(79 70 229 / 20%), transparent 42%),
+    radial-gradient(ellipse at 5% 100%, rgb(124 58 237 / 16%), transparent 40%),
+    linear-gradient(125deg, #080b19 4%, #11132a 55%, #0c1020 100%);
+}
+
+.detail-hero {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgb(79 70 229 / 28%), transparent 50%),
+    linear-gradient(135deg, #090b18, #17162f 60%, #0b1120);
+}
+
+.detail-hero::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(0deg, rgb(2 6 23 / 88%), transparent 70%);
+  content: "";
+  pointer-events: none;
+}
+
+.detail-hero img {
+  z-index: 0;
+  filter: saturate(0.9);
+  transition: filter 500ms ease, transform 800ms ease;
+}
+
+.detail-hero:hover img {
+  filter: saturate(1.05);
+  transform: scale(1.02);
+}
+
+.space-hero::before,
+.space-hero::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.space-hero::before {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 4%) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at 70% 44%, #000 0%, transparent 68%);
+}
+
+.space-hero::after {
+  background-image:
+    radial-gradient(1px 1px at 18% 24%, rgb(255 255 255 / 55%) 50%, transparent 100%),
+    radial-gradient(1px 1px at 42% 72%, rgb(255 255 255 / 40%) 50%, transparent 100%),
+    radial-gradient(2px 2px at 84% 18%, rgb(255 255 255 / 55%) 50%, transparent 100%),
+    radial-gradient(1px 1px at 91% 67%, rgb(255 255 255 / 45%) 50%, transparent 100%);
+  opacity: 0.8;
+}
+
+.space-hero__glow {
+  position: absolute;
+  z-index: -1;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.space-hero__glow--one {
+  top: -12rem;
+  right: 12%;
+  background: rgb(79 70 229 / 32%);
+}
+
+.space-hero__glow--two {
+  bottom: -16rem;
+  left: 18%;
+  background: rgb(124 58 237 / 22%);
+}
+
+.hero-gradient-text {
+  color: transparent;
+  background: linear-gradient(100deg, #c4b5fd 4%, #a5b4fc 46%, #67e8f9 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.orbit-ring {
+  position: absolute;
+  border: 1px solid rgb(199 210 254 / 12%);
+  border-radius: 9999px;
+}
+
+.orbit-ring--outer {
+  inset: 4%;
+}
+
+.orbit-ring--middle {
+  inset: 14%;
+  border-color: rgb(199 210 254 / 16%);
+}
+
+.orbit-ring--inner {
+  inset: 25%;
+  border-style: dashed;
+  border-color: rgb(199 210 254 / 24%);
+  animation: orbit-spin 48s linear infinite;
+}
+
+.orbit-ring--tilt {
+  inset: 19% 7%;
+  border-color: rgb(165 180 252 / 27%);
+  transform: rotate(-35deg);
+}
+
+.orbit-dot {
+  position: absolute;
+  top: 10%;
+  right: 13%;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background: #a5f3fc;
+  box-shadow: 0 0 18px 4px rgb(103 232 249 / 45%);
+}
+
+.orbit-core {
+  position: relative;
+  display: flex;
+  width: 42%;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 17%);
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 25%, rgb(129 140 248 / 34%), rgb(15 23 42 / 88%) 70%);
+  box-shadow: 0 0 65px rgb(99 102 241 / 19%), inset 0 0 35px rgb(99 102 241 / 13%);
+  animation: orbit-float 6s ease-in-out infinite;
+}
+
+.rocket-card__stars {
+  background-image:
+    radial-gradient(1px 1px at 20% 28%, rgb(255 255 255 / 60%) 50%, transparent 100%),
+    radial-gradient(1px 1px at 68% 63%, rgb(255 255 255 / 50%) 50%, transparent 100%),
+    radial-gradient(2px 2px at 84% 20%, rgb(255 255 255 / 45%) 50%, transparent 100%);
+}
+
+.rocket-card__visual img {
+  filter: saturate(0.9);
+}
+
+.rocket-card:hover .rocket-card__visual img {
+  filter: saturate(1.08);
+}
+
+@keyframes skeleton-shimmer {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-float {
+  50% {
+    transform: translateY(-0.45rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
